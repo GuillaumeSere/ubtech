@@ -76,7 +76,7 @@ export default function SolutionsPage() {
               ))}
             </div>
 
-            <button className="mt-10 group flex items-center gap-4 px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20">
+            <button className="mt-10 group cursor-pointer flex items-center gap-4 px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20">
               <span className="text-xs uppercase tracking-widest">Étude de cas gratuite</span>
               <BarChart3 className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>

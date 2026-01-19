@@ -96,7 +96,7 @@ export default function SupportPage() {
                 </div>
 
                 <div className="pt-4">
-                  <button className="relative w-full overflow-hidden group py-4 bg-blue-600 text-white font-bold uppercase text-[10px] tracking-[0.4em] transition-all">
+                  <button className="relative cursor-pointer w-full overflow-hidden group py-4 bg-blue-600 text-white font-bold uppercase text-[10px] tracking-[0.4em] transition-all">
                     <div className="absolute inset-0 w-full h-full bg-blue-400 translate-y-full group-hover:translate-y-0 transition-transform duration-300" />
                     <span className="relative z-10">Soumettre_au_Mainframe</span>
                   </button>

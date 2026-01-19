@@ -122,7 +122,7 @@ export default function RobotsPage() {
 
                                 <button
                                     onClick={() => setActiveRobot(null)}
-                                    className="mt-10 group flex items-center justify-center gap-2 py-4 bg-zinc-900 text-white text-[10px] font-bold uppercase tracking-widest rounded-xl border border-white/5 hover:bg-red-600 transition-all"
+                                    className="mt-10 cursor-pointer group flex items-center justify-center gap-2 py-4 bg-zinc-900 text-white text-[10px] font-bold uppercase tracking-widest rounded-xl border border-white/5 hover:bg-red-600 transition-all"
                                 >
                                     <X className="w-4 h-4" /> Quitter le mode démo
                                 </button>
