@@ -20,7 +20,7 @@ export default function Home() {
             {/* 2. OVERLAY HUD (Interface de visée) */}
             <div className="absolute inset-0 pointer-events-none z-10">
                 {/* Scanner latéral */}
-                <div className="absolute top-1/2 left-0 w-1 h-40 bg-gradient-to-b from-transparent via-blue-600 to-transparent -translate-y-1/2 animate-pulse" />
+                <div className="absolute top-1/2 left-0 w-1 h-40 bg-linear-to-b from-transparent via-blue-600 to-transparent -translate-y-1/2 animate-pulse" />
                 
                 {/* Coins de visée (Targeting) */}
                 <div className="absolute top-20 left-20 w-10 h-10 border-t-2 border-l-2 border-white/20" />
@@ -44,7 +44,7 @@ export default function Home() {
                 </motion.div>
 
                 <h2 className="text-7xl md:text-9xl font-black text-white tracking-tighter mb-4 leading-none">
-                    WALKER <span className="text-blue-600 italic">X</span>
+                    WALKER <span className="text-blue-600 italic">S2</span>
                 </h2>
                 
                 <p className="text-gray-400 font-mono text-sm leading-relaxed mb-8 border-l border-blue-500/50 pl-6">
