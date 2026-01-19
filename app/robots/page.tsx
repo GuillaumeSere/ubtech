@@ -83,21 +83,24 @@ export default function RobotsPage() {
 
                 {/* MODALE YOUTUBE */}
                 {activeRobot && (
-                    <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
+                    <div className="fixed inset-1 z-50 flex items-center justify-center p-4">
                         <div className="absolute inset-0 bg-black/95 backdrop-blur-xl" onClick={() => setActiveRobot(null)} />
 
-                        <div className="relative w-full max-w-6xl bg-[#0a0a0a] rounded-3xl overflow-hidden border border-white/10 flex flex-col lg:flex-row h-full max-h-[80vh]">
+                        <div className="relative w-full mt-20 max-w-6xl bg-[#0a0a0a] rounded-3xl overflow-hidden border border-white/10 flex flex-col lg:flex-row max-h-[90vh] overflow-y-auto">
 
                             {/* LECTEUR YOUTUBE */}
-                            <div className="flex-2 bg-black relative">
-                                <iframe
-                                    src={`https://www.youtube.com/embed/${activeRobot.youtubeId}?autoplay=1&rel=0&modestbranding=1`}
-                                    title={activeRobot.name}
-                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                    allowFullScreen
-                                    className="absolute inset-0 w-full h-full border-0"
-                                />
+                            <div className="flex-[2] bg-black relative w-full">
+                                <div className="relative w-full pt-[56.25%]"> {/* ratio 16/9 */}
+                                    <iframe
+                                        src={`https://www.youtube.com/embed/${activeRobot.youtubeId}?autoplay=1&rel=0&modestbranding=1`}
+                                        title={activeRobot.name}
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                        allowFullScreen
+                                        className="absolute top-0 left-0 w-full h-full border-0"
+                                    />
+                                </div>
                             </div>
+
 
                             {/* INFOS TECHNIQUES */}
                             <div className="flex-1 p-10 border-l border-white/5 flex flex-col">
