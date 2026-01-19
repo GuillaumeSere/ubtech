@@ -4,7 +4,7 @@ import Scene from '@/components/canvas/Scene';
 import { Suspense } from 'react';
 import { Loader } from '@react-three/drei';
 import { motion } from 'framer-motion';
-import { ChevronRight, Target, Activity, Zap } from 'lucide-react';
+import { ChevronRight, Target, Activity } from 'lucide-react';
 
 export default function Home() {
     return (

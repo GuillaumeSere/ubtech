@@ -2,7 +2,13 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { Orbitron } from "next/font/google";
 import { Cpu } from 'lucide-react';
+
+const orbitron = Orbitron({
+    subsets: ["latin"],
+    weight: ["400", "500", "600", "700", "800", "900"],
+});
 
 export default function Navbar() {
     // État pour gérer l'ouverture du menu mobile
@@ -35,7 +41,7 @@ export default function Navbar() {
                         <Link
                             key={item.name}
                             href={item.href}
-                            className="text-sm font-medium text-gray-300 hover:text-white transition-colors uppercase tracking-wider"
+                           className={`${orbitron.className} text-sm font-medium text-gray-300 hover:text-white transition-colors uppercase tracking-wider`}
                         >
                             {item.name}
                         </Link>
@@ -78,7 +84,7 @@ export default function Navbar() {
                             key={item.name}
                             href={item.href}
                             onClick={() => setIsOpen(false)} // Ferme le menu quand on clique sur un lien
-                            className="text-lg font-medium text-gray-300 hover:text-white transition-colors uppercase tracking-widest"
+                            className={`${orbitron.className}text-lg font-medium text-gray-300 hover:text-white transition-colors uppercase tracking-widest`}
                         >
                             {item.name}
                         </Link>
