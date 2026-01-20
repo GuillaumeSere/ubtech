@@ -69,12 +69,11 @@ export default function IAEducationPage() {
                                     <div className="w-3 h-3 rounded-full bg-yellow-500/20" />
                                     <div className="w-3 h-3 rounded-full bg-green-500/20" />
                                 </div>
-                                <pre className="font-mono text-sm text-blue-400 overflow-hidden">
+                                <pre className="font-mono text-[11px] sm:text-sm text-blue-400 whitespace-pre overflow-x-auto scrollbar-thin scrollbar-thumb-blue-500/30 scrollbar-track-transparent">
                                     <code>{`
                                         class RobotExpert(Ubtech):
                                             def learn(self, students):
                                                 return students.empower()
-
                                         # Initialisation de la classe de demain
                                         ubtech_edu = RobotExpert()
                                         ubtech_edu.start_lesson("AI_Logic")
