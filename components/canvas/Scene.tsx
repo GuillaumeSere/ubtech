@@ -5,7 +5,7 @@ import { OrbitControls,Stars, Float, Environment, PerspectiveCamera } from '@rea
 import { Suspense } from 'react';
 import RobotModel from './RobotModel';
 
-export default function Scene() {
+export default function Scene({ demo = true }: { demo?: boolean }) {
   return (
     <div className="h-screen w-full bg-[#050505]">
       <Canvas shadows>

@@ -5,26 +5,33 @@ import { useFrame } from '@react-three/fiber';
 import { useRef } from 'react';
 import * as THREE from 'three';
 
-export default function RobotModel() {
+interface RobotModelProps {
+  demo?: boolean;
+}
+
+export default function RobotModel({ demo = false }: RobotModelProps) {
     const group = useRef<THREE.Group>(null);
 
     // Utilisons un modèle de robot d'exemple (Drone/Robot volant)
     const { scene } = useGLTF('./models/robot.glb');
 
-    useFrame((state) => {
-        if (!group.current) return;
 
-        // 1. Suivre la souris doucement
-        // state.pointer.x va de -1 à +1
-        const targetRotationY = state.pointer.x * 0.5;
-        const targetRotationX = state.pointer.y * -0.2;
+  useFrame((state) => {
+    if (!group.current) return;
+    const t = state.clock.elapsedTime;
 
-        group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, targetRotationY, 0.1);
-        group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, targetRotationX, 0.1);
-
-        // 2. Faire "respirer" le robot (légère oscillation haut/bas)
-        group.current.position.y = Math.sin(state.clock.elapsedTime) * 0.1;
-    });
+    if (demo) {
+      // Animation "vivante" sur la page unité
+      group.current.rotation.y = Math.sin(t * 0.4) * 0.6;
+      group.current.rotation.x = Math.sin(t * 0.25) * 0.1;
+      group.current.position.y = Math.sin(t * 2) * 0.05;
+    } else {
+      // Mode idle / souris
+      group.current.rotation.y = THREE.MathUtils.lerp(group.current.rotation.y, state.pointer.x * 0.5, 0.1);
+      group.current.rotation.x = THREE.MathUtils.lerp(group.current.rotation.x, state.pointer.y * -0.2, 0.1);
+      group.current.position.y = Math.sin(t) * 0.08;
+    }
+  });
 
     return (
         <group ref={group}>

@@ -5,6 +5,7 @@ import { Suspense } from 'react';
 import { Loader } from '@react-three/drei';
 import { motion } from 'framer-motion';
 import { ChevronRight, Target, Activity } from 'lucide-react';
+import Link from 'next/link';
 
 export default function Home() {
     return (
@@ -54,10 +55,10 @@ export default function Home() {
 
                 {/* BOUTONS */}
                 <div className="flex flex-col sm:flex-row gap-6 mt-12 sm:mt-0">
-                    <button className="group flex w-fit cursor-pointer items-center gap-3 bg-white text-black px-8 py-4 rounded-sm font-bold text-xs uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all">
+                    <Link href="/units/walker-s2" className="group flex w-fit cursor-pointer items-center gap-3 bg-white text-black px-8 py-4 rounded-sm font-bold text-xs uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all">
                         Explorer l'unité
                         <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                    </button>
+                    </Link>
 
                     <div className="flex items-center gap-4 text-white/40 font-mono text-[10px]">
                         <span className="animate-pulse">REC ●</span>
