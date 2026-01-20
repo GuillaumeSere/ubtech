@@ -54,10 +54,15 @@ export default function IAEducationPage() {
                             </p>
 
                             <div className="flex gap-4">
-                                <button className="bg-white text-black px-8 py-4 rounded-full font-bold text-sm hover:bg-blue-600 hover:text-white transition-all">
+                                <a
+                                    href="/catalogue.pdf" 
+                                    download
+                                    className="bg-white text-black px-8 py-4 rounded-full font-bold text-sm hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center"
+                                >
                                     Télécharger le Catalogue
-                                </button>
+                                </a>
                             </div>
+
                         </div>
 
                         {/* VISUEL TECH RÉEL (Simulation d'une UI de programmation) */}

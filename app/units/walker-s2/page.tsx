@@ -137,7 +137,7 @@ export default function WalkerUnitPage() {
                             </span>
                             <button
                                 onClick={() => setDemoOpen(false)}
-                                className="text-white/60 hover:text-red-500 text-xs font-mono"
+                                className="text-white/60 cursor-pointer hover:text-red-500 text-xs font-mono"
                             >
                                 CLOSE
                             </button>
