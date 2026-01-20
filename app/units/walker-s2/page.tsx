@@ -40,12 +40,17 @@ export default function WalkerUnitPage() {
                     <div className="flex flex-col sm:flex-row gap-6 mt-10">
                         <button
                             onClick={() => setDemoOpen(true)}
-                            className="w-fit flex items-center gap-3 px-8 py-4 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all">
+                            className="w-fit flex items-center cursor-pointer gap-3 px-8 py-4 bg-white text-black text-xs font-bold uppercase tracking-widest hover:bg-blue-600 hover:text-white transition-all">
                             <Play className="w-4 h-4" /> Lancer la démonstration
                         </button>
-                        <button className="w-fit flex items-center gap-3 px-8 py-4 border border-white/10 text-xs font-bold uppercase tracking-widest hover:border-blue-500/50 transition-all">
+                        {/* Bouton téléchargement PDF */}
+                        <a
+                            href="/fiche.pdf" 
+                            download
+                            className="w-fit flex cursor-pointer items-center gap-3 px-8 py-4 border border-white/10 text-xs font-bold uppercase tracking-widest hover:border-blue-500/50 transition-all"
+                        >
                             <Download className="w-4 h-4" /> Fiche technique
-                        </button>
+                        </a>
                     </div>
                 </div>
             </section>
