@@ -13,7 +13,7 @@ export default function RobotModel({ demo = false }: RobotModelProps) {
     const group = useRef<THREE.Group>(null);
 
     // Utilisons un modèle de robot d'exemple (Drone/Robot volant)
-    const { scene } = useGLTF('./models/robot.glb');
+    const { scene } = useGLTF('/models/robot.glb');
 
 
   useFrame((state) => {
