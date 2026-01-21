@@ -1,7 +1,7 @@
 'use client';
 
 import { Canvas } from '@react-three/fiber';
-import { ContactShadows, OrbitControls, Stage } from '@react-three/drei';
+import { Stars, OrbitControls, Environment, PerspectiveCamera } from '@react-three/drei';
 import Link from 'next/link';
 import DroneModel from '@/components/canvas/DroneModel';
 import PageTransition from '@/components/ui/PageTransition';
@@ -35,11 +35,33 @@ export default function SolutionsPage() {
 
     return (
         <PageTransition>
-            <main className="min-h-screen bg-[#050505] pt-32 pb-20 overflow-hidden">
-                <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+            <main className="relative min-h-screen bg-[#050505] overflow-hidden">
+                
+                {/* 1. FOND 3D PLEINE PAGE */}
+                <div className="absolute inset-0 z-0">
+                    <Canvas>
+                        <Suspense fallback={null}>
+                            {/* Position de caméra éloignée pour voir le drone naviguer dans l'espace */}
+                            <PerspectiveCamera makeDefault position={[0, 0, 12]} fov={50} />
+                            
+                            <ambientLight intensity={0.4} />
+                            <pointLight position={[10, 10, 10]} intensity={1.5} color="#3b82f6" />
+                            
+                            <Stars radius={100} depth={50} count={6000} factor={4} saturation={0} fade speed={0.5} />
+                            
+                            {/* On utilise votre DroneModel avec ses animations de vol */}
+                            <DroneModel />
 
-                    {/* GAUCHE : CONTENU TEXTUEL DYNAMIQUE */}
-                    <div className="z-10">
+                            <Environment preset="night" />
+                        </Suspense>
+                    </Canvas>
+                    {/* Overlay pour assurer la lisibilité du texte à gauche */}
+                    <div className="absolute inset-0 bg-linear-to-r from-[#050505] via-[#050505]/60 to-transparent" />
+                </div>
+
+                {/* 2. CONTENU TEXTUEL AU-DESSUS DU DRONE */}
+                <div className="relative z-10 max-w-7xl mx-auto px-6 pt-32 pb-20 min-h-screen flex items-center">
+                    <div className="max-w-2xl">
                         <header className="mb-12">
                             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-blue-500/20 bg-blue-500/5 mb-6">
                                 <span className="relative flex h-2 w-2">
@@ -48,7 +70,7 @@ export default function SolutionsPage() {
                                 </span>
                                 <span className="text-[10px] font-mono text-blue-400 uppercase tracking-widest">Systèmes Autonomes Live</span>
                             </div>
-                            <h1 className="text-4xl md:text-7xl font-black text-white leading-tight tracking-tighter">
+                            <h1 className="text-5xl md:text-8xl font-black text-white leading-[0.9] tracking-tighter">
                                 SOLUTIONS <br />
                                 <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-500 to-cyan-400">
                                     INTELLIGENTES
@@ -61,7 +83,7 @@ export default function SolutionsPage() {
                                 <Link
                                     key={i}
                                     href={sector.path}
-                                    className="block group relative p-6 border border-white/5 bg-white/[0.02] rounded-2xl hover:bg-white/[0.05] hover:border-blue-500/30 transition-all duration-500 cursor-pointer"
+                                    className="block group relative p-6 border border-white/5 bg-white/[0.01] backdrop-blur-sm rounded-2xl hover:bg-white/[0.05] hover:border-blue-500/30 transition-all duration-500"
                                 >
                                     <div className="flex justify-between items-start mb-2">
                                         <div className="flex items-center gap-3">
@@ -76,56 +98,28 @@ export default function SolutionsPage() {
                                             {sector.metric}
                                         </span>
                                     </div>
-
-                                    <p className="text-gray-400 text-sm leading-relaxed max-w-md">
+                                    <p className="text-gray-400 text-sm leading-relaxed max-w-sm">
                                         {sector.task}
                                     </p>
-
-                                    <div className="mt-4 flex items-center gap-1 text-[10px] font-bold text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity">
-                                        DÉCOUVRIR LA SOLUTION <ChevronRight className="w-3 h-3" />
+                                    <div className="mt-4 flex items-center gap-1 text-[10px] font-bold text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity uppercase tracking-widest">
+                                        Détails techniques <ChevronRight className="w-3 h-3" />
                                     </div>
                                 </Link>
                             ))}
                         </div>
 
-                        <button className="mt-10 group cursor-pointer flex items-center gap-4 px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20">
+                        <button className="mt-10 group flex items-center gap-4 px-8 py-4 bg-blue-600 text-white font-bold rounded-xl hover:bg-blue-500 transition-all shadow-lg shadow-blue-500/20">
                             <span className="text-xs uppercase tracking-widest">Étude de cas gratuite</span>
                             <BarChart3 className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                         </button>
                     </div>
+                </div>
 
-                    {/* DROITE : VISUALISEUR 3D "LAB" */}
-                    <div className="relative h-[600px] w-full lg:h-[700px]">
-                        {/* Décoration d'arrière-plan (Viseur) */}
-                        <div className="absolute inset-0 border border-white/10 rounded-full animate-[spin_20s_linear_infinite] opacity-20" />
-                        <div className="absolute inset-10 border border-blue-500/10 rounded-full animate-[spin_15s_linear_infinite_reverse] opacity-20" />
-
-                        <div className="absolute inset-0 bg-linear-to-b from-blue-500/10 to-transparent rounded-3xl backdrop-blur-3xl border border-white/10 overflow-hidden shadow-2xl">
-                            {/* HUD UI Elements */}
-                            <div className="absolute top-8 left-8 space-y-2 z-10">
-                                <p className="font-mono text-[10px] text-blue-500 uppercase tracking-tighter">Model: UB-Drone v.2026</p>
-                                <div className="h-[1px] w-20 bg-blue-500/50" />
-                                <p className="font-mono text-[9px] text-gray-500">Coord: 48.8566° N, 2.3522° E</p>
-                            </div>
-
-                            <div className="absolute bottom-8 left-8 z-10 border-l border-blue-500 pl-4">
-                                <p className="font-mono text-[10px] text-white">STATUS: <span className="text-green-500">READY</span></p>
-                                <p className="font-mono text-[9px] text-gray-500 uppercase">Propulsion: Active</p>
-                            </div>
-
-                            {/* THREE.JS CANVAS */}
-                            <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
-                                <Suspense fallback={null}>
-                                    <Stage intensity={0.5} environment="city" adjustCamera={false}>
-                                        <DroneModel />
-                                    </Stage>
-                                    <ContactShadows position={[0, -1.2, 0]} opacity={0.4} scale={6} blur={2.4} far={2} />
-                                    <OrbitControls enableZoom={false} autoRotate autoRotateSpeed={0.5} />
-                                </Suspense>
-                            </Canvas>
-                        </div>
-                    </div>
-
+                {/* 3. ÉLÉMENTS HUD (DÉCORATION DE COINS) */}
+                <div className="absolute bottom-10 right-10 z-10 text-right hidden lg:block border-r-2 border-blue-500 pr-6">
+                    <p className="font-mono text-[10px] text-blue-400 uppercase tracking-widest mb-1">Status du système</p>
+                    <p className="text-2xl font-black text-white">OPÉRATIONNEL</p>
+                    <p className="font-mono text-[9px] text-gray-500 mt-2">LINK: ENCRYPTED // DEPTH: ACTIVE</p>
                 </div>
             </main>
         </PageTransition>

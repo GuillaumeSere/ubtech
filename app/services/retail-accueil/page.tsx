@@ -1,6 +1,7 @@
 import React from 'react';
 import { Users, CheckCircle2, ArrowLeft, Bot, MessageSquare, BarChart3 } from 'lucide-react';
 import Link from 'next/link';
+import PageTransition from '@/components/ui/PageTransition';
 
 const RetailAccueil = () => {
     const pointsForts = [
@@ -22,6 +23,7 @@ const RetailAccueil = () => {
     ];
 
     return (
+        <PageTransition>
         <div className="min-h-screen bg-[#020617] text-white p-8">
             {/* Bouton Retour */}
             <Link href="/" className="inline-flex items-center gap-2 text-gray-400 hover:text-blue-400 transition-colors mb-12 group">
@@ -86,6 +88,7 @@ const RetailAccueil = () => {
                 </div>
             </div>
         </div>
+        </PageTransition>
     );
 };
 
