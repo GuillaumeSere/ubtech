@@ -41,6 +41,24 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: 'monthly',
       priority: 0.8,
     },
+      {
+      url: `${baseUrl}/services/retail-accueil`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+      {
+      url: `${baseUrl}/services/sante-hygiene`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
+      {
+      url: `${baseUrl}/services/logistique`,
+      lastModified: new Date(),
+      changeFrequency: 'monthly',
+      priority: 0.8,
+    },
     {
       url: `${baseUrl}/support`,
       lastModified: new Date(),
